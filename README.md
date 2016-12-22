@@ -192,6 +192,24 @@ hook({
 });
 ```
 
+### `processTokens` function
+
+In even rarer cases, you may want to change the return value of the require.
+Return a new object, or modify & return `tokens`. This is useful, for example, if you want to
+add the compiled CSS to the returned object.
+
+```javascript
+hook({
+  /**
+   * @param  {object} tokens
+   * @param  {string} filepath
+   * @param  {object} lazyResult
+   * @return {object}
+   */
+  processTokens: function (tokens, filepath, lazyResult) { /* */ return tokens; }
+});
+```
+
 ### `processorOpts` object
 
 Provides possibility to pass custom options to the [LazyResult instance](https://github.com/postcss/postcss/blob/master/docs/api.md#processorprocesscss-opts). It can be usefull if you want to set the custom parser, for example: [postcss-less](https://github.com/gilt/postcss-less).
